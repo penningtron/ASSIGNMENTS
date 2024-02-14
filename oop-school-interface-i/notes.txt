@@ -1,0 +1,34 @@
+1. Make the school class 
+        - instance attributes
+            - name
+            - staff, List of Staff object instances:
+                teacher1 = Staff("teacher")
+                my_school.staff.append(teacher1)
+                my_school.staff[0].role
+
+            students: List of Student object instances
+
+
+1.5 Make a person class to be a parent class
+        - instance attributes
+            - name
+            - age, int
+            - role
+
+2. Make a Students(Person) class
+        - instance attributes:
+            - name
+            - role: "Student" - hardcode
+            - age, int
+            - school_id
+            - password
+        -create students from csv file
+
+3. Make a Staff(Person) class
+        - instance attributes
+            - name
+            - age
+            - role: 
+            - employee_id, int 
+            - password
+        - Create staff from csv data
