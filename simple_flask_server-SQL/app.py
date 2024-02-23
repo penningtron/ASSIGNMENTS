@@ -1,38 +1,45 @@
 from flask import Flask, jsonify
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 
-students = [
-     {'id': '1', 'first_name': 'John', 'last_name': 'Doe', 'age': 18, 'grade': 'A'},
-     {'id': '2', 'first_name': 'Jane', 'last_name': 'Smith', 'age': 19, 'grade': 'B'},
-     {'id': '3', 'first_name': 'Bob', 'last_name': 'Johnson', 'age': 20, 'grade': 'C'},
-     {'id': '4', 'first_name': 'Emily', 'last_name': 'Williams', 'age': 18, 'grade': 'A'},
-     {'id': '5', 'first_name': 'Michael', 'last_name': 'Brown', 'age': 19, 'grade': 'B'},
-     {'id': '6', 'first_name': 'Samantha', 'last_name': 'Davis', 'age': 22, 'grade': 'A'},
-     {'id': '7', 'first_name': 'Oliver', 'last_name': 'Jones', 'age': 20, 'grade': 'B'},
-     {'id': '8', 'first_name': 'Sophia', 'last_name': 'Miller', 'age': 21, 'grade': 'A'},
-     {'id': '9', 'first_name': 'Ethan', 'last_name': 'Wilson', 'age': 19, 'grade': 'C'},
-     {'id': '10', 'first_name': 'Isabella', 'last_name': 'Moore', 'age': 22, 'grade': 'B'}
- ]
+# Config for the PostgreSQL db
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://nathan@localhost/school'
+
+# Init the SQLAlchemy extension
+db = SQLAlchemy(app)
+
+class Students(db.Model):
+    __tablename__ = 'students'
+    id = db.Column(db.Integer, primary_key=True)
+    first_name = db.Column(db.String(50))
+    last_name = db.Column(db.String(50))
+    age = db.Column(db.Integer)
+    grade = db.Column(db.String(1))
+
 
 @app.route('/students', methods=['GET'])
 def get_students():
-    return jsonify(students)
+    students = Students.query.all()
+    student_list = [
+        {'id': student.id, 'first_name': student.first_name, 'last_name': student.last_name, 'age': student.age, 'grade': student.grade}
+        for student in students
+    ]
+    return jsonify(student_list)
 
 @app.route('/old_students', methods=['GET'])
 def get_old_students():
+    students = Students.query.all()
     old_students = [student for student in students if int(student['age']) > 20]
     return jsonify(old_students)
 
 @app.route('/young_students', methods=['GET'])
 def get_young_students():
+    students = Students.query.all()
     young_students = [student for student in students if int(student['age']) < 21]
     return jsonify(young_students)
-
 
 if __name__ == '__main__':
     app.run(debug=True)
 
-
 app.route
-
