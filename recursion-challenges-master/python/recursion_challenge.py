@@ -1,5 +1,8 @@
 def factorial(x):
-	pass
+	if x == 0:
+		return 1
+	else:
+		return x * factorial(x - 1)
 
 def palindrome(string):
 	pass
@@ -9,3 +12,6 @@ def bottles(num):
 
 def roman_num(num):
 	pass
+
+
+print(factorial(5))

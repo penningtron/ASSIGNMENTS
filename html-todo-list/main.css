@@ -1,0 +1,48 @@
+
+h1 {
+    color: rgb(17, 17, 17);
+    font-family: "IBM Plex Sans Condensed", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    text-align: center;
+
+}
+
+li {
+    font-family: "IBM Plex Sans", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    list-style-type: none;
+
+
+}
+
+.main {
+    flex-direction: column;
+    align-content: center;
+    padding-top: 100px;
+    margin: 10dvh;
+    width: 300px;
+    border: 1px solid rgb(176, 176, 176);
+    padding: 10px;
+    filter: drop-shadow(1px 1px 10px #e5f679);
+    background-color: aliceblue;
+    border-radius: 15px;
+    
+
+
+}
+
+#todoInput{
+    
+    width: 75%;
+    padding: 2px;
+
+}
+
+label{
+    font-family: "IBM Plex Sans", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+
+}
