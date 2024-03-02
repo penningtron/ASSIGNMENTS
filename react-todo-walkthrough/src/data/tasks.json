@@ -1,0 +1,28 @@
+[
+    {
+      "id": 1,
+      "task": "Complete HTML and CSS tutorial",
+      "completed": false
+    },
+    {
+      "id": 2,
+      "task": "Learn JavaScript basics",
+      "completed": true
+    },
+    {
+      "id": 3,
+      "task": "Build a simple web page",
+      "completed": false
+    },
+    {
+      "id": 4,
+      "task": "Study responsive web design principles",
+      "completed": false
+    },
+    {
+      "id": 5,
+      "task": "Explore CSS frameworks",
+      "completed": true
+    }
+  ]
+  
