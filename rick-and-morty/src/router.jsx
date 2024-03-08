@@ -4,6 +4,7 @@ import HomePage from "./pages/HomePage"
 import About from "./pages/About.jsx"
 import CharactersPage from "./pages/CharactersPage.jsx";
 import EpisodesPage from "./pages/EpisodesPage.jsx"
+import CharInfo from "./pages/CharInfo.jsx";
 
 const router = createBrowserRouter([
     {
@@ -27,6 +28,11 @@ const router = createBrowserRouter([
             {
                 path:"episodes",
                 element:<EpisodesPage />
+            },
+            {
+                path:"charinfo/:id",
+                element: <CharInfo />
+
             }
         ],
     },

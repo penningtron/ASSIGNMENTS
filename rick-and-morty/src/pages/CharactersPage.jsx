@@ -2,10 +2,12 @@
 import React, { useState, useEffect } from 'react';
 import { Card, Container, Row, Col, Button } from 'react-bootstrap';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function CharactersPage() {
   const [characters, setCharacters] = useState([]);
   const [nextPage, setNextPage] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchCharacters = async () => {
@@ -17,6 +19,12 @@ function CharactersPage() {
         console.error('Error fetching data:', error);
       }
     };
+
+    // : ) hey there
+
+    //shhhh im  demoing lol
+
+    // haha ok. 
 
     fetchCharacters();
   }, []);
@@ -32,6 +40,11 @@ function CharactersPage() {
     }
   };
 
+  const charPageRoute = (id) => {
+    navigate(`/charinfo/${id}`)
+
+  }
+
   return (
     <Container>
       <h1 className="mt-5 mb-4">Rick and Morty Characters</h1>
@@ -45,6 +58,10 @@ function CharactersPage() {
                 <Card.Text>Status: {character.status}</Card.Text>
                 <Card.Text>Species: {character.species}</Card.Text>
                 <Card.Text>Origin: {character.origin.name}</Card.Text>
+                <Button variant="primary" onClick={() => charPageRoute(character.id)}> 
+                  Details
+                    
+                </Button>
               </Card.Body>
             </Card>
           </Col>
