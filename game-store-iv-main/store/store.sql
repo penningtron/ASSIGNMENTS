@@ -1,3 +1,5 @@
+
+
 -- Drop the table if it exists
 DROP TABLE IF EXISTS game;
 
@@ -5,8 +7,9 @@ DROP TABLE IF EXISTS game;
 CREATE TABLE game (
     game_id INT PRIMARY KEY,
     game_title VARCHAR(255) UNIQUE NOT NULL CHECK (game_title ~ '^[A-Za-z0-9 _\-:''\\]+$'),
-    quantity INT NOT NULL CHECK(quantity > 0 AND quantity < 51),
+    quantity INT NOT NULL CHECK(quantity >= 0 AND quantity < 51),
     price DECIMAL(5, 2) NOT NULL CHECK(price > 10 AND price < 60)
+
 );
 
 
@@ -60,9 +63,18 @@ CREATE TABLE poster (
 
 \COPY poster FROM './data/poster.csv' WITH CSV HEADER;
 
+DROP TABLE IF EXISTS gaming_engine CASCADE; 
+
+
+CREATE TABLE gaming_engine (
+    engine_id INT PRIMARY KEY,
+    engine_name VARCHAR(255) UNIQUE NOT NULL
+);
+\COPY gaming_engine FROM './data/gaming_engine.csv' WITH CSV HEADER;
+
 -- Drop the table if it exists
 DROP TABLE IF EXISTS game CASCADE;
-
+SELECT 1;
 -- Create Game Table
 CREATE TABLE game (
     game_id SERIAL PRIMARY KEY,
@@ -72,10 +84,19 @@ CREATE TABLE game (
     price DECIMAL(5, 2) NOT NULL CHECK(price > 10 AND price < 60),
     FOREIGN KEY (engine_id) REFERENCES gaming_engine(engine_id)  -- Reference engine_id here
 );
+-- 1,1,The Witcher 3: Wild Hunt,30,39.99
 
 
 -- Insert Sample Data into Game Table
 \COPY game FROM './data/game.csv' WITH CSV HEADER;
+
+
+
+\d game;
+
+DROP TABLE IF EXISTS gaming_engine CASCADE; 
+\d game;
+
 
 DROP TABLE IF EXISTS genre_game CASCADE;
 
