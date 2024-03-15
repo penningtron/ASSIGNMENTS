@@ -1,0 +1,6 @@
+id,name,lived_period,category,flying
+1,Tyrannosaurus Rex,Late Cretaceous,Theropod,No
+2,Stegosaurus,Late Jurassic,Stegosaurid,No
+3,Triceratops,Late Cretaceous,Ceratopsian,No
+4,Pteranodon,Late Cretaceous,Pterosaur,Yes
+5,Brachiosaurus,Late Jurassic,Sauropod,No
